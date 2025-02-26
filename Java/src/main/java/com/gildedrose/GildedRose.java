@@ -1,60 +1,64 @@
 package com.gildedrose;
 
-class GildedRose {
-    Item[] items;
+public class GildedRose {
+    private Item[] items;
 
     public GildedRose(Item[] items) {
         this.items = items;
     }
 
+    public final Item[] getItems() {
+        return this.items;
+    }
+
+    public final boolean isMaxQual(Item itemTest) {
+        return itemTest.quality < 50;
+    }
+
+    public final boolean isMinQual(Item itemTest) {
+        return itemTest.quality > 0;
+    }
+
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
-            if (!items[i].name.equals("Aged Brie")
-                    && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (items[i].quality > 0) {
-                    if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                        items[i].quality = items[i].quality - 1;
+        for (Item product : items) {
+            if (!product.name.equals("Aged Brie") &&
+                    !product.name.equals("Backstage passes to a TAFKAL80ETC concert") &&
+                    !product.name.equals("Sulfuras, Hand of Ragnaros") &&
+                    isMinQual(product)) {
+                product.quality--;
+
+            } else if (isMaxQual(product)) {
+                product.quality++;
+
+                if (product.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    if (product.sellIn < 11 &&
+                            isMaxQual(product)) {
+                        product.quality++;
                     }
-                }
-            } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
 
-                    if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
-
-                        if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
+                    if (product.sellIn < 6 &&
+                            isMaxQual(product)) {
+                        product.quality++;
                     }
                 }
             }
 
-            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                items[i].sellIn = items[i].sellIn - 1;
+            if (!product.name.equals("Sulfuras, Hand of Ragnaros")) {
+                product.sellIn--;
             }
 
-            if (items[i].sellIn < 0) {
-                if (!items[i].name.equals("Aged Brie")) {
-                    if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].quality > 0) {
-                            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                                items[i].quality = items[i].quality - 1;
-                            }
+            if (product.sellIn < 0) {
+                if (!product.name.equals("Aged Brie")) {
+                    if (!product.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                        if (isMinQual(product) &&
+                                !product.name.equals("Sulfuras, Hand of Ragnaros")) {
+                            product.quality--;
                         }
                     } else {
-                        items[i].quality = items[i].quality - items[i].quality;
+                        product.quality -= product.quality;
                     }
-                } else {
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
-                    }
+                } else if (isMaxQual(product)) {
+                    product.quality++;
                 }
             }
         }
