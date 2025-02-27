@@ -16,21 +16,26 @@ public class TexttestFixture {
                 // this conjured item does not work properly yet
                 new Item("Conjured Mana Cake", 3, 6) };
 
-        GildedRose app = new GildedRose(items);
+        GildedRose appRos = new GildedRose(items);
+        GildedRoseM2 appMic = new GildedRoseM2(items);
 
         int days = 20;
         if (args.length > 0) {
             days = Integer.parseInt(args[0]) + 1;
         }
 
-        for (int i = 0; i < days; i++) {
-            System.out.println("-------- day " + i + " --------");
+        for (int d = 0; d < days; d++) {
+
+            System.out.println("-------- day " + d + " --------");
             System.out.println("name, sellIn, quality");
-            for (Item item : items) {
-                System.out.println(item);
+            // for (Item item : items) {
+            for (int i = 0; i < items.length; i++) {
+                System.out.println("> Ros > " + appRos.items[i]);
+                System.out.println("> Mic > " + appMic.items[i] + "\n");
             }
             System.out.println();
-            app.updateQuality();
+            appRos.updateQuality();
+            appMic.updateQuality();
         }
     }
 
