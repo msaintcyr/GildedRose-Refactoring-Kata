@@ -2,8 +2,8 @@ package com.gildedrose;
 
 class GildedRoseM2 implements ItemLab {
     Item[] items;
-    private static final int maxQuality = 50;
-    private static final int minQuality = 0;
+    static int maxQuality = 50;
+    static int minQuality = 0;
 
     public GildedRoseM2(Item[] items) {
         this.items = items;
@@ -33,11 +33,11 @@ class GildedRoseM2 implements ItemLab {
 
             if (!item.name.equals(SUL)) {
                 item.sellIn--;
+                if (item.sellIn < 0) {
+                    handleExpiredItem(item);
+                }
             }
 
-            if (item.sellIn < 0) {
-                handleExpiredItem(item);
-            }
         }
     }
 

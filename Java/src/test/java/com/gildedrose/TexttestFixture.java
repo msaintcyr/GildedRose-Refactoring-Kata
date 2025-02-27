@@ -28,13 +28,13 @@ public class TexttestFixture {
 
             System.out.println("-------- day " + d + " --------");
             System.out.println("name, sellIn, quality");
-            // for (Item item : items) {
+
             for (int i = 0; i < items.length; i++) {
-                System.out.println("> Ros > " + appRos.items[i]);
+                // System.out.println("> Ros > " + appRos.items[i]);
                 System.out.println("> Mic > " + appMic.items[i] + "\n");
             }
             System.out.println();
-            appRos.updateQuality();
+            // appRos.updateQuality();
             appMic.updateQuality();
         }
     }
