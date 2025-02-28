@@ -1,7 +1,5 @@
 package com.gildedrose;
 
-import java.util.Arrays;
-
 public class TexttestFixture {
     public static void main(String[] args) {
         System.out.println("OMGHAI!");
@@ -18,8 +16,20 @@ public class TexttestFixture {
                 // this conjured item does not work properly yet
                 new Item("Conjured Mana Cake", 3, 6) };
 
+        Item[] itemas = new Item[] {
+                new Item("+5 Dexterity Vest", 10, 20), //
+                new Item("Aged Brie", 2, 0), //
+                new Item("Elixir of the Mongoose", 5, 7), //
+                new Item("Sulfuras, Hand of Ragnaros", 0, 80), //
+                new Item("Sulfuras, Hand of Ragnaros", -1, 80),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+                // this conjured item does not work properly yet
+                new Item("Conjured Mana Cake", 3, 6) };
+
         GildedRose appRos = new GildedRose(items);
-        GildedRoseM2 appMic = new GildedRoseM2(items);
+        GildedRoseM2 appMic = new GildedRoseM2(itemas);
 
         int days = 20;
         if (args.length > 0) {
@@ -32,11 +42,11 @@ public class TexttestFixture {
             System.out.println("name, sellIn, quality");
 
             for (int i = 0; i < items.length; i++) {
-                // System.out.println("> Ros > " + appRos.items[i]);
+                System.out.println("> Ros > " + appRos.items[i]);
                 System.out.println("> Mic > " + appMic.items[i] + "\n");
             }
             System.out.println();
-            // appRos.updateQuality();
+            appRos.updateQuality();
             appMic.updateQuality();
         }
     }

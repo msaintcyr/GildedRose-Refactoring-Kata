@@ -2,10 +2,7 @@ package com.gildedrose;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -40,6 +37,5 @@ class GildedRoseTest {
             appMicke.updateQuality();
         }
         assertEquals(resultRose, resultMick);
-        // assertEquals(appRose.items[i].quality, appMicke.items[i].quality);
     }
 }

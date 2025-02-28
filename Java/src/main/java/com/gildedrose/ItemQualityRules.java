@@ -36,7 +36,7 @@ public interface ItemQualityRules extends ItemLab {
     }
 
     public static void updateSulfuras(Item item) {
-        // TODO Auto-generated method stub
+        // Auto-generated method stub
 
     }
 
