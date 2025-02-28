@@ -1,9 +1,7 @@
 package com.gildedrose;
 
-class GildedRoseM2 implements ItemLab {
+class GildedRoseM2 implements ItemQualityRules {
     Item[] items;
-    static int maxQuality = 50;
-    static int minQuality = 0;
 
     public GildedRoseM2(Item[] items) {
         this.items = items;
@@ -15,11 +13,11 @@ class GildedRoseM2 implements ItemLab {
 
             switch (item.name) {
                 case AGE:
-                    updateAgedBrie(item);
+                    ItemQualityRules.updateAgedBrie(item);
                     break;
 
                 case BAC:
-                    updateBackstagePasses(item);
+                    ItemQualityRules.updateBackstagePasses(item);
                     break;
 
                 case SUL:
@@ -27,59 +25,17 @@ class GildedRoseM2 implements ItemLab {
                     break;
 
                 default:
-                    updateNormalItem(item);
+                    ItemQualityRules.updateNormalItem(item);
                     break;
             }
 
             if (!item.name.equals(SUL)) {
                 item.sellIn--;
                 if (item.sellIn < 0) {
-                    handleExpiredItem(item);
+                    ItemQualityRules.handleExpiredItem(item);
                 }
             }
 
-        }
-    }
-
-    private void updateNormalItem(Item item) {
-        if (item.quality > minQuality) {
-            item.quality--;
-        }
-    }
-
-    private void updateAgedBrie(Item item) {
-        if (item.quality < maxQuality) {
-            item.quality++;
-        }
-    }
-
-    private void updateBackstagePasses(Item item) {
-        if (item.quality < maxQuality) {
-            item.quality++;
-
-            if (item.sellIn < 11) {
-                if (item.quality < maxQuality) {
-                    item.quality++;
-                }
-            }
-
-            if (item.sellIn < 6) {
-                if (item.quality < maxQuality) {
-                    item.quality++;
-                }
-            }
-        }
-    }
-
-    private void handleExpiredItem(Item item) {
-        if (item.name.equals(AGE)) {
-            if (item.quality < maxQuality) {
-                item.quality++;
-            }
-        } else if (item.name.equals(BAC)) {
-            item.quality = 0;
-        } else if (item.quality > minQuality) {
-            item.quality--;
         }
     }
 }

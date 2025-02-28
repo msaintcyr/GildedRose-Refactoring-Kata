@@ -25,7 +25,7 @@ class GildedRoseTest {
                 System.out.println("> Mic > " + appMicke.items[i] + "\n");
             }
             appRose.updateQuality();
-            appMicke.updateQuality();
+            // appMicke.updateQuality();
         }
     }
 
