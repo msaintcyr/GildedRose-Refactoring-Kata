@@ -21,7 +21,7 @@ class GildedRoseM2 implements ItemQualityRules {
                     break;
 
                 case SUL:
-                    // ...
+                    ItemQualityRules.updateSulfuras(item);
                     break;
 
                 default:
