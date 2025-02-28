@@ -15,7 +15,7 @@ class GildedRoseTest {
         Item[] itemas = new Item[] { new Item("foo", 10, 30) };
 
         GildedRose appRose = new GildedRose(items);
-        GildedRoseM2 appMicke = new GildedRoseM2(itemas);
+        GildedMick appMicke = new GildedMick(itemas);
         int days = 20;
         List<String> resultRose = new ArrayList<String>();
         List<String> resultMick = new ArrayList<String>();

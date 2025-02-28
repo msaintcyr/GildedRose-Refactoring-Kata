@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public interface ItemQualityRules extends ItemLab {
+public interface ItemQualityRules extends ItemLabel {
 
     public static int maxQuality = 50;
     public static int minQuality = 0;

@@ -1,9 +1,9 @@
 package com.gildedrose;
 
-class GildedRoseM2 implements ItemQualityRules {
+class GildedMick implements ItemQualityRules {
     Item[] items;
 
-    public GildedRoseM2(Item[] items) {
+    public GildedMick(Item[] items) {
         this.items = items;
     }
 
